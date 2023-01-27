@@ -37,7 +37,7 @@ public class AdminController {
         model.addAttribute("allRoles", roleService.allRoles()); // добавлен список всех ролей
         return "admin";
     }
-//  ############### new user ####################################
+//new user
 
     @GetMapping("/new")
     public String newUser(Principal principal, Model model) {
@@ -54,7 +54,7 @@ public class AdminController {
         return "redirect:/admin";
     }
 
-// ############### delete user ############################################################
+//delete user
 
     @DeleteMapping("/{id}")
     public String delete(@ModelAttribute("user") User user,
@@ -63,7 +63,7 @@ public class AdminController {
         return "redirect:/admin";
     }
 
-    // ############### edit user ############################################################
+    //edit user
     @GetMapping("/{username}/edit")
     public String edit(Model model, @PathVariable("username") String username) {
         model.addAttribute("user", userService.findByUsername(username));

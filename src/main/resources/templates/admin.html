@@ -9,7 +9,7 @@
 </head>
 <body>
 
-<!-- ##################### Шапка ##################### -->
+<!--Шапка-->
 <header>
     <div class="container-fluid m-0 p-0">
         <div class="row bg-dark bg-gradient m-0 p-3">
@@ -32,7 +32,7 @@
 
 <div class="container-fluid">
     <div class="row m-0 p-0">
-        <!-- ##################### Боковая левая панель ##################### -->
+        <!--Боковая левая панель-->
         <div class="col-md-2 p-0 m-0 align-top">
             <div class="bg-white vh-100 m-0 p-0 w-100">
                 <ul class="nav nav-pills fs-5 w-100">
@@ -47,11 +47,11 @@
             </div>
         </div>
 
-        <!-- ##################### Основная панель ##################### -->
+        <!--Основная панель-->
         <div class="col-md-10 p-3 bg-light m-0 p-0">
             <div class="h1">Admin panel</div>
 
-            <!-- ##################### Вкладки ##################### -->
+            <!--Вкладки-->
             <ul class="nav nav-tabs">
                 <li class="nav-item">
                     <a class="nav-link active" aria-current="page" href="/admin">Users table</a>
@@ -62,7 +62,7 @@
             </ul>
 
             <div class="card">
-                <!-- ##################### Таблица пользователей ##################### -->
+                <!--Таблица пользователей-->
 
                 <table class="table table-striped">
 
@@ -94,18 +94,14 @@
                             <td th:utext="${person.email}">...</td>
                             <td th:utext="${person.roleName()}">...</td>
                             <td>
-
-                                <!--<form  th:action="@{/admin/{username}/edit (username=${person.getUsername()})}">
-                                    <input type="submit" value="Edit"/>
-                                </form>-->
-                                <!-- ##################### Кнопка редактирования ##################### -->
+                                <!--Кнопка редактирования-->
                                 <a type="button" data-bs-toggle="modal" data-bs-target="#editModal"
                                    class="btn btn-primary" th:data-bs-target="${'#editModal' + person.getId()}">
                                     Edit
                                 </a>
 
                             </td>
-                            <!-- ##################### Модальное окно редактирования ##################### -->
+                            <!--Модальное окно редактирования-->
 
                             <div class="modal" th:id="${'editModal' + person.getId()}" tabindex="-1">
                                 <div class="modal-dialog">
@@ -189,7 +185,7 @@
                                                 </div>
                                             </div>
 
-                                            <!-- Низ модального окна-->
+                                            <!--Низ модального окна-->
                                             <div class="modal-footer">
                                                 <button class="btn btn-secondary" data-bs-dismiss="modal"
                                                         type="button">Close
@@ -204,7 +200,7 @@
                             </div>
 
 
-                            <!-- Кнопка удаления -->
+                            <!--Кнопка удаления-->
                             <td>
                                 <a type="button" data-bs-toggle="modal" data-bs-target="#deleteModal"
                                    class="btn btn-danger" th:data-bs-target="${'#deleteModal' + person.id}">
@@ -258,7 +254,7 @@
 
                                             </div>
 
-                                            <!-- Низ модального окна-->
+                                            <!--Низ модального окна-->
                                             <div class="modal-footer">
                                                 <button class="btn btn-secondary" data-bs-dismiss="modal"
                                                         type="button">Close
