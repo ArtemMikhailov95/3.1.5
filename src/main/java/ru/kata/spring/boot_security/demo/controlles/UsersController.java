@@ -24,7 +24,7 @@ public class UsersController {
     public String findUser(Principal principal, Model model) {
         User user = userService.findByUsername(principal.getName());
         model.addAttribute("user", user);
-        return "/users/read";
+        return "/user";
     }
 }
 

@@ -1,10 +1,65 @@
 <!DOCTYPE html>
 <html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="https://www.thymeleaf.org" xmlns:sec="https://www.thymeleaf.org/thymeleaf-extras-springsecurity3">
+
 <head>
-    <title>Spring Security Example</title>
-</head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Bootstrap demo</title>
+ </head>
+
 <body>
-<h1>Welcome to Index PAGE!</h1>
+
+<script type="text/javascript" src="webjars/jquery/3.5.1/jquery.min.js"></script>
+<script type="text/javascript" src="webjars/bootstrap/4.6.1/js/bootstrap.bundle.min.js"></script>
+<link rel="stylesheet" href="webjars/bootstrap/4.6.1/css/bootstrap.min.css"/>
+<div class="container">
+    <div class="card">
+        <div class="card-block">
+            <table class="table-hover">
+                <tread>
+                    <tr>
+                        <th>ID</th>
+                        <th>First Name</th>
+                        <th>Last Name</th>
+                        <th>Age</th>
+                        <th>Email</th>
+                        <th>Rol</th>
+                        <th>Edit</th>
+                        <th>Delete</th>
+                    </tr>
+
+
+                </tread>
+
+                <tbody>
+                <tr th:each="user : ${users}">
+
+
+
+                </tr>
+
+
+                </tbody>
+
+
+            </table>
+
+
+        </div>
+
+
+    </div>
+
+
+</div>
+
+<nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+    <a href="#" class="navbar-brand">
+        <img src="https://yandex.ru/images/search?pos=188&p=3&from=tabbar&text=spring%20java&img_url=http%3A%2F%2Fblog.netgloo.com%2Fwp-content%2Fthemes%2Fnetgloo_blog%2Fdist%2Fimages%2Fcategories%2Fspring.png&rpt=simage&lr=38"
+             width="30" height="30" alt="logo">
+    </a>
+</nav>
+
 
 
 </body>

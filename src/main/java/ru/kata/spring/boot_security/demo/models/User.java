@@ -22,18 +22,22 @@ public class User {
     private String name;
 
     @Column(name = "last_name")
-    private String lastName;
+    private String last_name;
 
     @Column
     private int age;
 
+    @Column
+    private String email;
+
     public User() {
     }
 
-    public User(int id, String name, String lastName, int age) {
+    public User(String name, String last_name, int age, String email) {
         this.name = name;
-        this.lastName = lastName;
+        this.last_name = last_name;
         this.age = age;
+        this.email = email;
     }
 
     @ManyToMany
@@ -73,12 +77,12 @@ public class User {
         this.name = name;
     }
 
-    public String getLastName() {
-        return lastName;
+    public String getLast_name() {
+        return last_name;
     }
 
-    public void setLastName(String lastName) {
-        this.lastName = lastName;
+    public void setLast_name(String last_name) {
+        this.last_name = last_name;
     }
 
     public int getAge() {
@@ -89,11 +93,33 @@ public class User {
         this.age = age;
     }
 
+    public String getEmail() {
+        return email;
+    }
+
+    public void setEmail(String email) {
+        this.email = email;
+    }
+
     public Collection<Roles> getRoles() {
         return roles;
     }
 
     public void setRoles(Collection<Roles> roles) {
         this.roles = roles;
+    }
+
+    @Override
+    public String toString() {
+        return username;
+    }
+
+    public String roleName() {
+        Roles[] role = roles.toArray(new Roles[getRoles().size()]);
+        StringBuilder rolesList = new StringBuilder();
+        for (Roles value : role) {
+            rolesList.append(value);
+        }
+        return String.valueOf(rolesList);
     }
 }
