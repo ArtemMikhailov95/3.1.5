@@ -7,12 +7,13 @@ import ru.kata.spring.boot_security.demo.models.Roles;
 
 import java.util.ArrayList;
 import java.util.List;
-import java.util.Set;
+import java.util.Objects;
 
 @Service
 public class RoleServiceImpl implements RoleService {
-    private RolesDAO rolesDAO;
+    private final RolesDAO rolesDAO;
 
+    @Autowired
     public RoleServiceImpl(RolesDAO rolesDAO) {
         this.rolesDAO = rolesDAO;
     }
@@ -24,9 +25,8 @@ public class RoleServiceImpl implements RoleService {
 
     @Override
     public Roles getRoleByName(String name) {
-        Long id;
         for (Roles role : rolesDAO.findAll()) {
-            if (role.getName() == name) {
+            if (Objects.equals(role.getName(), name)) {
                 return role;
             }
         }
