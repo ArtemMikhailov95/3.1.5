@@ -26,7 +26,7 @@ public class AdminController {
 
 
     @GetMapping()
-    public String pageForAdmin(Principal principal, Model model) {
+    public String readAll(Principal principal, Model model) {
         // все юзеры
 
         model.addAttribute("createUser", new User());
@@ -37,7 +37,6 @@ public class AdminController {
         model.addAttribute("allRoles", roleService.allRoles()); // добавлен список всех ролей
         return "admin";
     }
-//new user
 
     @GetMapping("/new")
     public String newUser(Principal principal, Model model) {
@@ -47,7 +46,7 @@ public class AdminController {
         return "addUser";
     }
 
-    @PostMapping("/save")
+    @PostMapping("/new")
     public String createUser(@ModelAttribute("user") User user) {
         userService.create(user);
 
@@ -71,7 +70,7 @@ public class AdminController {
         return "editUser";
     }
 
-    @PatchMapping ("/{username}")
+    @PatchMapping("/{username}")
     public String update(@ModelAttribute("user") User user,
                          @PathVariable("username") String username) {
         userService.update(username, user);
