@@ -1,36 +1,35 @@
-const url_new = '/admin/new';
-const roles_new = document.querySelector('#roles').selectedOptions;
-const form_new = document.forms["formForCreatingNewUser"];
+let formNew = document.forms["formNewUser"];
+addUser();
 
-async function newUser() {
-    form_new.addEventListener('submit', createUser)
-
-    async function createUser(e) {
-        e.preventDefault();
-        let listOfRole = [];
-        for (let i = 0; i < roles_new.length; i++) {
-            listOfRole.push("ROLE_" + roles_new[i].value);
+function addUser() {
+    formNew.addEventListener("submit", ev => {
+        ev.preventDefault();
+        let newUserRoles = [];
+        for (let i = 0; i < formNew.roles.options.length; i++) {
+            if (formNew.roles.options[i].selected) newUserRoles.push({
+                id: formNew.roles.value,
+                name: "ROLE_" + formNew.roles.options[i].text
+            });
         }
-
-        let method = {
+        fetch("http://localhost:8080/rest/admin/", {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json'
             },
             body: JSON.stringify({
-                name: form_new.name.value,
-                last_name: form_new.last_name.value,
-                age: form_new.age.value,
-                username: form_new.username.value,
-                password: form_new.password.value,
-                roles: listOfRole
+                id: formNew.id.value,
+                name: formNew.name.value,
+                last_name: formNew.last_name.value,
+                email: formNew.email.value,
+                age: formNew.age.value,
+                username: formNew.username.value,
+                password: formNew.password.value,
+                roles: newUserRoles
             })
-        }
-
-        await fetch(url_new, method).then(() => {
-            form_new.reset();
-            getReadAll();
-            $("#tabBtnAllUsers").click();
+        }).then(() => {
+            formNew.reset();
+            readAll();
+            $('#home-tab').click();
         });
-    }
+    });
 }

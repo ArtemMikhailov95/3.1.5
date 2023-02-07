@@ -38,7 +38,7 @@ public class AdminController {
         return "admin";
     }
 
-    @GetMapping("/new")
+/*    @GetMapping("/new")
     public String newUser(Principal principal, Model model) {
         model.addAttribute("newUser", new User());
         model.addAttribute("roles", roleService.allRoles());
@@ -75,5 +75,5 @@ public class AdminController {
                          @PathVariable("username") String username) {
         userService.update(username, user);
         return "redirect:/admin/";
-    }
+    }*/
 }

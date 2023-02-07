@@ -1,34 +1,23 @@
-const url='/rest/user'
 
-async function getUserPage () {
-    let page = await fetch(url)
+fillInPrincipal();
 
-    if (page.ok) {
-        let user = await page.json();
-        getInformationAboutUser(user);
-    } else {
-        alert(`Error, ${page.status}`);
-    }
+function fillInPrincipal() {
+    fetch("http://localhost:8080/rest/user")
+        .then(res => res.json())
+        .then(data => {
+            $('#headerUserName').append(data.username);
+            let roles = data.roles.map(role => " " + role.name.substring(5));
+            $('#headerRole').append(roles);
+            let user = `$(
+                <tr>
+                    <td>${data.id}</td>
+                    <td>${data.name}</td>
+                    <td>${data.last_name}</td>
+                    <td>${data.email}</td>
+                    <td>${data.age}</td>   
+                    <td>${data.username}</td>
+                    <td>${roles}</td>
+                </tr>)`;
+            $('#userTable').append(user);
+        })
 }
-
-function getInformationAboutUser(user) {
-    let tr = document.createElement("tr")
-    let roles = []
-
-    for (let role of user.roles) {
-        roles.push(" " + role.name.toString().replaceAll('ROLE_', ''))
-    }
-
-    tr.innerHTML=
-        `<tr>
-            <td>${user.id}</td>
-            <td>${user.firstName}</td>
-            <td>${user.lastName}</td>
-            <td>${user.age}</td>
-            <td>${user.username}</td>
-            <td>${roles}</td>
-        </tr>`
-    document.getElementById(`tbody`).append(tr);
-}
-
-getUserPage();
